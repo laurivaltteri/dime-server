@@ -9,7 +9,7 @@ import socket
 import time
 import json
 import requests
-import ConfigParser
+import ConfigParser 
 import hashlib
 from pprint import pprint
 from datetime import datetime, timedelta
@@ -18,10 +18,11 @@ from pytz import timezone
 #------------------------------------------------------------------------------
 
 fitbit_config = 'fitbit.cfg'
-activity_type = 'steps'
+#activity_type = 'steps'
+activity_type = 'heart'
 
-#detail_level = '1min'
-detail_level = '15min'
+detail_level = '1sec'
+#detail_level = '15min'
 
 server_url = 'http://localhost:8080/api'
 server_username = 'testuser'
@@ -77,10 +78,13 @@ if __name__ == '__main__':
     for i in range(len(metadata)):
         day = metadata[i]['dateTime']
 
+        #interval = values['datasetInterval']
+        #assert(values['datasetType'] == 'minute')
         interval = values['datasetInterval']
-        assert(values['datasetType'] == 'minute')
-
-        td = timedelta(minutes=interval)
+        assert(values['datasetType'] == 'second')
+        
+        #td = timedelta(minutes=interval)
+        td = timedelta(seconds=interval)
 
         for data in values['dataset']:
             #print(data['time'], data['value'])
