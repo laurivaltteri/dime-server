@@ -18,11 +18,11 @@ from pytz import timezone
 #------------------------------------------------------------------------------
 
 fitbit_config = 'fitbit.cfg'
-#activity_type = 'steps'
-activity_type = 'heart'
+activity_type = 'steps'
+#activity_type = 'heart'
 
-detail_level = '1sec'
-#detail_level = '15min'
+#detail_level = '1sec'
+detail_level = '15min'
 
 server_url = 'http://localhost:8080/api'
 server_username = 'testuser'
@@ -78,13 +78,13 @@ if __name__ == '__main__':
     for i in range(len(metadata)):
         day = metadata[i]['dateTime']
 
-        #interval = values['datasetInterval']
-        #assert(values['datasetType'] == 'minute')
         interval = values['datasetInterval']
-        assert(values['datasetType'] == 'second')
+        assert(values['datasetType'] == 'minute')
+        #interval = values['datasetInterval']
+        #assert(values['datasetType'] == 'second')
         
-        #td = timedelta(minutes=interval)
-        td = timedelta(seconds=interval)
+        td = timedelta(minutes=interval)
+        #td = timedelta(seconds=interval)
         
         preval = 0
         walkth = 20
